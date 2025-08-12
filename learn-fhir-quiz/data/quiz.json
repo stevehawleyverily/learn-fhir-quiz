@@ -1,0 +1,179 @@
+{
+  "questions": [
+    {
+      "question": "According to the introduction, what is the primary problem that FHIR is designed to solve in healthcare?",
+      "answerOptions": [
+        {
+          "text": "The lack of a standardized way for different healthcare systems to share and understand each other's data.",
+          "isCorrect": true,
+          "rationale": "Correct! The document explicitly states that healthcare data is often scattered across different systems using their own formats, and FHIR was designed to simplify data sharing between them."
+        },
+        {
+          "text": "The difficulty of storing large volumes of patient data in traditional relational databases.",
+          "isCorrect": false,
+          "rationale": "Incorrect. While FHIR uses a flexible format, its primary goal is interoperability (standardizing data exchange), not solving storage volume issues."
+        },
+        {
+          "text": "The need for a more secure method of encrypting patient health information during transmission.",
+          "isCorrect": false,
+          "rationale": "Incorrect. While security is a component of FHIR, its main purpose is to standardize data exchange, not to be a specific encryption method."
+        },
+        {
+          "text": "To replace all existing healthcare data standards like CDASH and SDTM with a single, universal format.",
+          "isCorrect": false,
+          "rationale": "Incorrect. The document mentions CDASH and SDTM as analogous standards for clinical trials, not as standards that FHIR is meant to replace."
+        }
+      ]
+    },
+    {
+      "question": "What is the fundamental building block of data in FHIR, used to represent specific concepts like a patient or a lab result?",
+      "answerOptions": [
+        {
+          "text": "A Profile",
+          "isCorrect": false,
+          "rationale": "Incorrect. A Profile is a customized version of a resource, not the fundamental building block itself."
+        },
+        {
+          "text": "An Extension",
+          "isCorrect": false,
+          "rationale": "Incorrect. An Extension is used to add extra information to a resource, but it isn't the base unit."
+        },
+        {
+          "text": "A Resource",
+          "isCorrect": true,
+          "rationale": "Correct! The document's core idea is that FHIR represents all health data as 'resources,' which are the foundational units for concepts like Patient, Observation, etc."
+        },
+        {
+          "text": "A CodeableConcept",
+          "isCorrect": false,
+          "rationale": "Incorrect. A CodeableConcept is a complex data type used within a resource; it's a component of a resource, not the resource itself."
+        }
+      ]
+    },
+    {
+      "question": "When creating your first Patient resource, you add a `birthDate`. According to the document, which format must be used for all dates in FHIR to ensure interoperability?",
+      "answerOptions": [
+        {
+          "text": "DD-MM-YYYY",
+          "isCorrect": false,
+          "rationale": "Incorrect. This format is not the standard required by FHIR."
+        },
+        {
+          "text": "MM/DD/YY",
+          "isCorrect": false,
+          "rationale": "Incorrect. This format is ambiguous and not used in FHIR."
+        },
+        {
+          "text": "ISO-8601 (YYYY-MM-DD)",
+          "isCorrect": true,
+          [cite_start]"rationale": "Correct! The document explicitly states that all dates in FHIR must follow the ISO-8601 format (YYYY-MM-DD) [cite: 153, 275-277]."
+        },
+        {
+          "text": "A Unix timestamp (seconds since epoch)",
+          "isCorrect": false,
+          "rationale": "Incorrect. While machine-readable, this is not the specified human-readable standard for the date data type in FHIR."
+        }
+      ]
+    },
+    {
+      "question": "In Part 4, when adding `maritalStatus` to the Patient resource, a `CodeableConcept` is used. What is a key advantage of using a `CodeableConcept` over a simple `code` data type?",
+      "answerOptions": [
+        {
+          "text": "It enforces a single, unchangeable value for an element across all systems.",
+          "isCorrect": false,
+          "rationale": "Incorrect. A `CodeableConcept` is actually more flexible, allowing for multiple codings."
+        },
+        {
+          "text": "It allows referencing standardized terminology systems (like LOINC or SNOMED CT) and can include human-readable text.",
+          "isCorrect": true,
+          "rationale": "Correct! The document highlights that a `CodeableConcept` allows representing a concept with multiple codings from terminologies and includes display text."
+        },
+        {
+          "text": "It can only hold numeric values, which makes database queries faster.",
+          "isCorrect": false,
+          "rationale": "Incorrect. A `CodeableConcept` holds coded concepts, which include systems, codes (often alphanumeric), and display text."
+        },
+        {
+          "text": "It is a simpler data type that is easier to implement than the primitive `code` type.",
+          "isCorrect": false,
+          "rationale": "Incorrect. The `code` type is a primitive string, whereas `CodeableConcept` is a more complex data type."
+        }
+      ]
+    },
+    {
+      "question": "What is the primary purpose of using an `extension` in a FHIR resource, as demonstrated with the US Core race extension in Part 5?",
+      "answerOptions": [
+        {
+          "text": "To hide sensitive patient information from certain users.",
+          "isCorrect": false,
+          "rationale": "Incorrect. Security and access control are handled by other mechanisms, not extensions."
+        },
+        {
+          "text": "To add information that is not covered by the base FHIR resource structure in a standardized way.",
+          "isCorrect": true,
+          "rationale": "Correct! [cite_start]The document explicitly states that extensions are a mechanism to add information not covered by the base resource, following the '80/20 rule' [cite: 510-512]."
+        },
+        {
+          "text": "To link a resource to another resource, such as linking an Observation to a Patient.",
+          "isCorrect": false,
+          "rationale": "Incorrect. Linking resources is done using the `Reference` data type."
+        },
+        {
+          "text": "To provide a summary of the resource's content in a human-readable format.",
+          "isCorrect": false,
+          "rationale": "Incorrect. The primary purpose of an extension is to add new, structured data elements, not just to provide a summary."
+        }
+      ]
+    },
+    {
+      "question": "In the Observation resource created in Part 6, how is the blood pressure measurement linked to the Patient resource created earlier?",
+      "answerOptions": [
+        {
+          "text": "By adding the patient's name directly into a text field in the Observation resource.",
+          "isCorrect": false,
+          "rationale": "Incorrect. Using a name is not a reliable or standardized way to link resources in FHIR."
+        },
+        {
+          "text": "By nesting the entire Patient resource inside the Observation resource.",
+          "isCorrect": false,
+          "rationale": "Incorrect. Nesting the entire resource would be inefficient. FHIR uses a more lightweight linking method."
+        },
+        {
+          "text": "By using an `extension` that points to the Patient's business identifier (MRN).",
+          "isCorrect": false,
+          "rationale": "Incorrect. The standard way to link resources is the `Reference` data type, not an extension."
+        },
+        {
+          "text": "By using a `Reference` data type in the `subject` element that contains the Patient's resource ID.",
+          "isCorrect": true,
+          "rationale": "Correct! [cite_start]The document shows this exact method, stating the `subject` field is a `Reference` to the Patient resource [cite: 742, 795-796]."
+        }
+      ]
+    },
+    {
+      "question": "What is the relationship between the `Questionnaire` and `QuestionnaireResponse` (QR) resources as described in Part 7 on Structured Data Capture?",
+      "answerOptions": [
+        {
+          "text": "They are interchangeable; a `Questionnaire` can store both the questions and the answers.",
+          "isCorrect": false,
+          "rationale": "Incorrect. They are two distinct resources; one defines the form, and the other captures the answers."
+        },
+        {
+          "text": "A `QuestionnaireResponse` defines the form structure, and the `Questionnaire` stores the submitted data.",
+          "isCorrect": false,
+          "rationale": "Incorrect. This reverses the roles. The `Questionnaire` is the template, and the `QuestionnaireResponse` is the filled-out form."
+        },
+        {
+          "text": "There is a one-to-many relationship: one `Questionnaire` (the form) can have many `QuestionnaireResponses` (the completed instances).",
+          "isCorrect": true,
+          "rationale": "Correct! [cite_start]The document explicitly states this one-to-many relationship, comparing it to rows in a table[cite: 1606]."
+        },
+        {
+          "text": "They are independent resources and cannot be linked together; the data must be matched manually.",
+          "isCorrect": false,
+          "rationale": "Incorrect. A key feature of the `QuestionnaireResponse` is that it contains a mandatory reference that ties it directly back to the `Questionnaire`."
+        }
+      ]
+    }
+  ]
+}
