@@ -66,7 +66,7 @@
         {
           "text": "ISO-8601 (YYYY-MM-DD)",
           "isCorrect": true,
-          [cite_start]"rationale": "Correct! The document explicitly states that all dates in FHIR must follow the ISO-8601 format (YYYY-MM-DD) [cite: 153, 275-277]."
+          "rationale": "Correct! The document explicitly states that all dates in FHIR must follow the ISO-8601 format (YYYY-MM-DD)."
         },
         {
           "text": "A Unix timestamp (seconds since epoch)",
