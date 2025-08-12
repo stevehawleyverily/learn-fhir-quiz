@@ -166,7 +166,7 @@
         {
           "text": "There is a one-to-many relationship: one `Questionnaire` (the form) can have many `QuestionnaireResponses` (the completed instances).",
           "isCorrect": true,
-          "rationale": "Correct! [cite_start]The document explicitly states this one-to-many relationship, comparing it to rows in a table[cite: 1606]."
+          "rationale": "Correct! The document explicitly states this one-to-many relationship, comparing it to rows in a table."
         },
         {
           "text": "They are independent resources and cannot be linked together; the data must be matched manually.",
